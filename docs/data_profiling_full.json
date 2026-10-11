@@ -1,0 +1,1614 @@
+[
+  {
+    "filename": "charges_full.csv",
+    "filepath": "C:\\Users\\deves\\Downloads\\project\\charges_full.csv",
+    "file_size_bytes": 25445,
+    "row_count": 200,
+    "column_count": 13,
+    "columns": [
+      {
+        "column_name": "id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 200,
+        "sample_values": [
+          "QHMMYUKY-1-room",
+          "QHMMYUKY-1-breakfast",
+          "KELTWFWN-1-room"
+        ]
+      },
+      {
+        "column_name": "reservation_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "QHMMYUKY-1",
+          "QHMMYUKY-1",
+          "KELTWFWN-1"
+        ]
+      },
+      {
+        "column_name": "folio_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "QHMMYUKY-1-1",
+          "QHMMYUKY-1-1",
+          "KELTWFWN-1-1"
+        ]
+      },
+      {
+        "column_name": "property_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "LND",
+          "LND",
+          "LND"
+        ]
+      },
+      {
+        "column_name": "charge_type",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "ROOM",
+          "BREAKFAST",
+          "ROOM"
+        ]
+      },
+      {
+        "column_name": "description",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "Synthetic room accommodation",
+          "Synthetic breakfast charge",
+          "Synthetic room accommodation"
+        ]
+      },
+      {
+        "column_name": "quantity",
+        "dtype": "int64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "1",
+          "1",
+          "1"
+        ]
+      },
+      {
+        "column_name": "unit_price",
+        "dtype": "float64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 197,
+        "sample_values": [
+          "325.68",
+          "11.97",
+          "129.54"
+        ]
+      },
+      {
+        "column_name": "tax_amount",
+        "dtype": "float64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 184,
+        "sample_values": [
+          "32.57",
+          "1.2",
+          "12.95"
+        ]
+      },
+      {
+        "column_name": "gross_amount",
+        "dtype": "float64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 197,
+        "sample_values": [
+          "325.68",
+          "11.97",
+          "129.54"
+        ]
+      },
+      {
+        "column_name": "charge_date",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 53,
+        "sample_values": [
+          "2026-09-07",
+          "2026-09-07",
+          "2026-09-20"
+        ]
+      },
+      {
+        "column_name": "currency",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "GBP",
+          "GBP",
+          "GBP"
+        ]
+      },
+      {
+        "column_name": "data_source",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "synthetic",
+          "synthetic",
+          "synthetic"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "folios.csv",
+    "filepath": "C:\\Users\\deves\\Downloads\\project\\folios.csv",
+    "file_size_bytes": 93018,
+    "row_count": 205,
+    "column_count": 21,
+    "columns": [
+      {
+        "column_name": "id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 205,
+        "sample_values": [
+          "LNIGSXXC-1-1",
+          "DDGJLNTI-1-1",
+          "WAVOVQUD-1-1"
+        ]
+      },
+      {
+        "column_name": "external_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 205,
+        "sample_values": [
+          "LNIGSXXC-1-1",
+          "DDGJLNTI-1-1",
+          "WAVOVQUD-1-1"
+        ]
+      },
+      {
+        "column_name": "reservation_id",
+        "dtype": "object",
+        "null_count": 105,
+        "null_pct": 51.22,
+        "unique_count": 100,
+        "sample_values": [
+          "LNIGSXXC-98-1",
+          "DDGJLNTI-91-1",
+          "WAVOVQUD-80-1"
+        ]
+      },
+      {
+        "column_name": "booking_id",
+        "dtype": "object",
+        "null_count": 5,
+        "null_pct": 2.44,
+        "unique_count": 100,
+        "sample_values": [
+          "LNIGSXXC",
+          "DDGJLNTI",
+          "WAVOVQUD"
+        ]
+      },
+      {
+        "column_name": "property_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "BER",
+          "BER",
+          "BER"
+        ]
+      },
+      {
+        "column_name": "type",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "Guest",
+          "Guest",
+          "Guest"
+        ]
+      },
+      {
+        "column_name": "status",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "Open",
+          "Open",
+          "Open"
+        ]
+      },
+      {
+        "column_name": "balance",
+        "dtype": "float64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "-126.7",
+          "-65.295",
+          "-60.23"
+        ]
+      },
+      {
+        "column_name": "created_at",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 200,
+        "sample_values": [
+          "2026-08-10T15:05:28Z",
+          "2026-08-10T15:05:30Z",
+          "2026-08-10T15:05:32Z"
+        ]
+      },
+      {
+        "column_name": "updated_at",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 200,
+        "sample_values": [
+          "2026-08-10T15:05:28Z",
+          "2026-08-10T15:05:30Z",
+          "2026-08-10T15:05:32Z"
+        ]
+      },
+      {
+        "column_name": "closing_date",
+        "dtype": "float64",
+        "null_count": 205,
+        "null_pct": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      {
+        "column_name": "is_main_folio",
+        "dtype": "bool",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "True",
+          "True",
+          "True"
+        ]
+      },
+      {
+        "column_name": "is_empty",
+        "dtype": "bool",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      {
+        "column_name": "checked_out_on_ar",
+        "dtype": "bool",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      {
+        "column_name": "debtor_data",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 205,
+        "sample_values": [
+          "{\"type\": \"PrimaryGuest\", \"firstName\": \"Abigail\", \"name\": \"Ro",
+          "{\"type\": \"PrimaryGuest\", \"firstName\": \"Elena\", \"name\": \"Schw",
+          "{\"type\": \"PrimaryGuest\", \"firstName\": \"Sophie\", \"name\": \"Mue"
+        ]
+      },
+      {
+        "column_name": "company_data",
+        "dtype": "float64",
+        "null_count": 205,
+        "null_pct": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      {
+        "column_name": "property_data",
+        "dtype": "float64",
+        "null_count": 205,
+        "null_pct": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      {
+        "column_name": "reservation_data",
+        "dtype": "object",
+        "null_count": 105,
+        "null_pct": 51.22,
+        "unique_count": 100,
+        "sample_values": [
+          "{\"id\": \"LNIGSXXC-98-1\", \"bookingId\": \"LNIGSXXC\"}",
+          "{\"id\": \"DDGJLNTI-91-1\", \"bookingId\": \"DDGJLNTI\"}",
+          "{\"id\": \"WAVOVQUD-80-1\", \"bookingId\": \"WAVOVQUD\"}"
+        ]
+      },
+      {
+        "column_name": "charges",
+        "dtype": "float64",
+        "null_count": 205,
+        "null_pct": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      {
+        "column_name": "payments",
+        "dtype": "float64",
+        "null_count": 205,
+        "null_pct": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      {
+        "column_name": "allowances",
+        "dtype": "float64",
+        "null_count": 205,
+        "null_pct": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      }
+    ]
+  },
+  {
+    "filename": "invoices.csv",
+    "filepath": "C:\\Users\\deves\\Downloads\\project\\invoices.csv",
+    "file_size_bytes": 164426,
+    "row_count": 200,
+    "column_count": 23,
+    "columns": [
+      {
+        "column_name": "id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 200,
+        "sample_values": [
+          "INV-000001",
+          "INV-000002",
+          "INV-000003"
+        ]
+      },
+      {
+        "column_name": "external_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 200,
+        "sample_values": [
+          "INV-000001",
+          "INV-000002",
+          "INV-000003"
+        ]
+      },
+      {
+        "column_name": "invoice_number",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 200,
+        "sample_values": [
+          "INV-BER-00001",
+          "INV-BER-00002",
+          "INV-BER-00003"
+        ]
+      },
+      {
+        "column_name": "folio_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "LNIGSXXC-1-1",
+          "LNIGSXXC-1-1",
+          "DDGJLNTI-1-1"
+        ]
+      },
+      {
+        "column_name": "reservation_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "LNIGSXXC-98-1",
+          "LNIGSXXC-98-1",
+          "DDGJLNTI-91-1"
+        ]
+      },
+      {
+        "column_name": "booking_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "LNIGSXXC",
+          "LNIGSXXC",
+          "DDGJLNTI"
+        ]
+      },
+      {
+        "column_name": "property_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "BER",
+          "BER",
+          "BER"
+        ]
+      },
+      {
+        "column_name": "property_country_code",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 4,
+        "sample_values": [
+          "DE",
+          "DE",
+          "DE"
+        ]
+      },
+      {
+        "column_name": "status",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "ISSUED",
+          "ISSUED",
+          "ISSUED"
+        ]
+      },
+      {
+        "column_name": "type",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "STAY",
+          "STAY",
+          "STAY"
+        ]
+      },
+      {
+        "column_name": "payment_settled",
+        "dtype": "bool",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "False",
+          "False",
+          "True"
+        ]
+      },
+      {
+        "column_name": "total",
+        "dtype": "float64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 198,
+        "sample_values": [
+          "152.04",
+          "101.36",
+          "78.35"
+        ]
+      },
+      {
+        "column_name": "created_at",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 200,
+        "sample_values": [
+          "2026-08-10T18:04:37Z",
+          "2026-08-10T19:04:37Z",
+          "2026-08-10T20:04:37Z"
+        ]
+      },
+      {
+        "column_name": "invoice_date",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 48,
+        "sample_values": [
+          "2026-09-19",
+          "2026-09-19",
+          "2026-09-03"
+        ]
+      },
+      {
+        "column_name": "due_from",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 47,
+        "sample_values": [
+          "2026-09-17",
+          "2026-09-17",
+          "2026-09-02"
+        ]
+      },
+      {
+        "column_name": "due_to",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 46,
+        "sample_values": [
+          "2026-09-19",
+          "2026-09-19",
+          "2026-09-03"
+        ]
+      },
+      {
+        "column_name": "language_code",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "en",
+          "en",
+          "en"
+        ]
+      },
+      {
+        "column_name": "commercial_information",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "{\"customer_name\": \"Abigail Rodriguez\", \"customer_email\": \"da",
+          "{\"customer_name\": \"Abigail Rodriguez\", \"customer_email\": \"da",
+          "{\"customer_name\": \"Elena Schwidde\", \"customer_email\": \"daisy"
+        ]
+      },
+      {
+        "column_name": "line_items",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 200,
+        "sample_values": [
+          "[{\"description\": \"Room accommodation\", \"quantity\": 2, \"unit_",
+          "[{\"description\": \"Room accommodation\", \"quantity\": 2, \"unit_",
+          "[{\"description\": \"Room accommodation\", \"quantity\": 1, \"unit_"
+        ]
+      },
+      {
+        "column_name": "payments",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "[]",
+          "[]",
+          "[]"
+        ]
+      },
+      {
+        "column_name": "outstanding_payment",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 105,
+        "sample_values": [
+          "{\"amount\": 152.04, \"currency\": \"EUR\"}",
+          "{\"amount\": 101.36, \"currency\": \"EUR\"}",
+          "{\"amount\": 78.35, \"currency\": \"EUR\"}"
+        ]
+      },
+      {
+        "column_name": "company_data",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "{\"name\": \"Hotel Berlin GmbH\", \"country_code\": \"DE\"}",
+          "{\"name\": \"Hotel Berlin GmbH\", \"country_code\": \"DE\"}",
+          "{\"name\": \"Hotel Berlin GmbH\", \"country_code\": \"DE\"}"
+        ]
+      },
+      {
+        "column_name": "stay_info",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "{\"arrival\": \"2026-09-17\", \"departure\": \"2026-09-19\", \"durati",
+          "{\"arrival\": \"2026-09-17\", \"departure\": \"2026-09-19\", \"durati",
+          "{\"arrival\": \"2026-09-02\", \"departure\": \"2026-09-03\", \"durati"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "ota_reservations_full.csv",
+    "filepath": "C:\\Users\\deves\\Downloads\\project\\ota_reservations_full.csv",
+    "file_size_bytes": 3653,
+    "row_count": 20,
+    "column_count": 19,
+    "columns": [
+      {
+        "column_name": "id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 20,
+        "sample_values": [
+          "ota-AEBWEDVV-1",
+          "ota-BQZAWJWO-1",
+          "ota-CRZKMIZR-1"
+        ]
+      },
+      {
+        "column_name": "ota_name",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 4,
+        "sample_values": [
+          "Booking.com",
+          "Expedia",
+          "Agoda"
+        ]
+      },
+      {
+        "column_name": "ota_reservation_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 20,
+        "sample_values": [
+          "SYN-OTA-AEBWEDVV-1",
+          "SYN-OTA-BQZAWJWO-1",
+          "SYN-OTA-CRZKMIZR-1"
+        ]
+      },
+      {
+        "column_name": "pms_reservation_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 20,
+        "sample_values": [
+          "AEBWEDVV-1",
+          "BQZAWJWO-1",
+          "CRZKMIZR-1"
+        ]
+      },
+      {
+        "column_name": "property_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "PAR",
+          "PAR",
+          "VIE"
+        ]
+      },
+      {
+        "column_name": "booking_date",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "2026-08-10",
+          "2026-08-10",
+          "2026-08-10"
+        ]
+      },
+      {
+        "column_name": "arrival",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 17,
+        "sample_values": [
+          "2026-08-23",
+          "2026-10-08",
+          "2026-08-24"
+        ]
+      },
+      {
+        "column_name": "departure",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 18,
+        "sample_values": [
+          "2026-08-28",
+          "2026-10-14",
+          "2026-08-30"
+        ]
+      },
+      {
+        "column_name": "room_nights",
+        "dtype": "int64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 6,
+        "sample_values": [
+          "5",
+          "6",
+          "6"
+        ]
+      },
+      {
+        "column_name": "gross_amount",
+        "dtype": "float64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 20,
+        "sample_values": [
+          "107.44",
+          "150.18",
+          "146.99"
+        ]
+      },
+      {
+        "column_name": "commission_rate",
+        "dtype": "float64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "0.15",
+          "0.15",
+          "0.15"
+        ]
+      },
+      {
+        "column_name": "commission_amount",
+        "dtype": "float64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 20,
+        "sample_values": [
+          "16.12",
+          "22.53",
+          "22.05"
+        ]
+      },
+      {
+        "column_name": "expected_settlement",
+        "dtype": "float64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 20,
+        "sample_values": [
+          "91.32",
+          "127.65",
+          "124.94"
+        ]
+      },
+      {
+        "column_name": "actual_settlement",
+        "dtype": "float64",
+        "null_count": 4,
+        "null_pct": 20.0,
+        "unique_count": 16,
+        "sample_values": [
+          "91.32",
+          "117.65",
+          "134.94"
+        ]
+      },
+      {
+        "column_name": "settlement_date",
+        "dtype": "object",
+        "null_count": 4,
+        "null_pct": 20.0,
+        "unique_count": 15,
+        "sample_values": [
+          "2026-08-28",
+          "2026-10-14",
+          "2026-08-30"
+        ]
+      },
+      {
+        "column_name": "currency",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "EUR",
+          "EUR",
+          "EUR"
+        ]
+      },
+      {
+        "column_name": "status",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "SETTLED",
+          "SETTLED",
+          "SETTLED"
+        ]
+      },
+      {
+        "column_name": "reconciliation_scenario",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "exact",
+          "underpayment",
+          "overpayment"
+        ]
+      },
+      {
+        "column_name": "data_source",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "synthetic",
+          "synthetic",
+          "synthetic"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "payments_full.csv",
+    "filepath": "C:\\Users\\deves\\Downloads\\project\\payments_full.csv",
+    "file_size_bytes": 12414,
+    "row_count": 100,
+    "column_count": 11,
+    "columns": [
+      {
+        "column_name": "id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "QHMMYUKY-1-payment",
+          "KELTWFWN-1-payment",
+          "KANNJVGG-1-payment"
+        ]
+      },
+      {
+        "column_name": "reservation_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "QHMMYUKY-1",
+          "KELTWFWN-1",
+          "KANNJVGG-1"
+        ]
+      },
+      {
+        "column_name": "folio_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "QHMMYUKY-1-1",
+          "KELTWFWN-1-1",
+          "KANNJVGG-1-1"
+        ]
+      },
+      {
+        "column_name": "property_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "LND",
+          "LND",
+          "VIE"
+        ]
+      },
+      {
+        "column_name": "payment_method",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "CREDIT_CARD",
+          "BANK_TRANSFER",
+          "CASH"
+        ]
+      },
+      {
+        "column_name": "amount",
+        "dtype": "float64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "327.65",
+          "154.52",
+          "51.14"
+        ]
+      },
+      {
+        "column_name": "payment_date",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 54,
+        "sample_values": [
+          "2026-09-11",
+          "2026-09-24",
+          "2026-10-08"
+        ]
+      },
+      {
+        "column_name": "currency",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "GBP",
+          "GBP",
+          "EUR"
+        ]
+      },
+      {
+        "column_name": "transaction_reference",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "SYN-QHMMYUKY-1-PAY",
+          "SYN-KELTWFWN-1-PAY",
+          "SYN-KANNJVGG-1-PAY"
+        ]
+      },
+      {
+        "column_name": "status",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "PARTIALLY_PAID",
+          "PARTIALLY_PAID",
+          "PARTIALLY_PAID"
+        ]
+      },
+      {
+        "column_name": "data_source",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "synthetic",
+          "synthetic",
+          "synthetic"
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "properties.csv",
+    "filepath": "C:\\Users\\deves\\Downloads\\project\\properties.csv",
+    "file_size_bytes": 673,
+    "row_count": 5,
+    "column_count": 11,
+    "columns": [
+      {
+        "column_name": "id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "BER",
+          "LND",
+          "MUC"
+        ]
+      },
+      {
+        "column_name": "external_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "BER",
+          "LND",
+          "MUC"
+        ]
+      },
+      {
+        "column_name": "code",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "BER",
+          "LND",
+          "MUC"
+        ]
+      },
+      {
+        "column_name": "company_name",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "Hotel Berlin GmbH",
+          "London Calling Ltd.",
+          "Hotel M\u00fcnchen GmbH"
+        ]
+      },
+      {
+        "column_name": "name",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "{\"en\": \"Hotel Berlin\"}",
+          "{\"en\": \"Hotel London\"}",
+          "{\"en\": \"Hotel Munich\"}"
+        ]
+      },
+      {
+        "column_name": "status",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "Test",
+          "Test",
+          "Test"
+        ]
+      },
+      {
+        "column_name": "is_archived",
+        "dtype": "bool",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      {
+        "column_name": "country_code",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 4,
+        "sample_values": [
+          "DE",
+          "GB",
+          "DE"
+        ]
+      },
+      {
+        "column_name": "timezone",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 4,
+        "sample_values": [
+          "Europe/Berlin",
+          "Europe/London",
+          "Europe/Berlin"
+        ]
+      },
+      {
+        "column_name": "created_at",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "2026-08-10T17:03:11+02:00",
+          "2026-08-10T17:03:11+01:00",
+          "2026-08-10T17:03:11+02:00"
+        ]
+      },
+      {
+        "column_name": "updated_at",
+        "dtype": "float64",
+        "null_count": 5,
+        "null_pct": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      }
+    ]
+  },
+  {
+    "filename": "reservations.csv",
+    "filepath": "C:\\Users\\deves\\Downloads\\project\\reservations.csv",
+    "file_size_bytes": 97518,
+    "row_count": 100,
+    "column_count": 25,
+    "columns": [
+      {
+        "column_name": "id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "LNIGSXXC-98-1",
+          "DDGJLNTI-91-1",
+          "WAVOVQUD-80-1"
+        ]
+      },
+      {
+        "column_name": "external_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "LNIGSXXC-98-1",
+          "DDGJLNTI-91-1",
+          "WAVOVQUD-80-1"
+        ]
+      },
+      {
+        "column_name": "booking_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "LNIGSXXC",
+          "DDGJLNTI",
+          "WAVOVQUD"
+        ]
+      },
+      {
+        "column_name": "property_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "BER",
+          "BER",
+          "BER"
+        ]
+      },
+      {
+        "column_name": "block_id",
+        "dtype": "float64",
+        "null_count": 100,
+        "null_pct": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      {
+        "column_name": "status",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 3,
+        "sample_values": [
+          "CheckedOut",
+          "CheckedOut",
+          "InHouse"
+        ]
+      },
+      {
+        "column_name": "arrival",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 62,
+        "sample_values": [
+          "2026-09-17T00:00:00+02:00",
+          "2026-09-02T00:00:00+02:00",
+          "2026-09-09T00:00:00+02:00"
+        ]
+      },
+      {
+        "column_name": "departure",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 63,
+        "sample_values": [
+          "2026-09-19T00:00:00+02:00",
+          "2026-09-03T00:00:00+02:00",
+          "2026-09-10T00:00:00+02:00"
+        ]
+      },
+      {
+        "column_name": "created_at",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 49,
+        "sample_values": [
+          "2026-08-10T17:04:37+02:00",
+          "2026-08-10T17:04:42+02:00",
+          "2026-08-10T17:04:47+02:00"
+        ]
+      },
+      {
+        "column_name": "modified_at",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 63,
+        "sample_values": [
+          "2026-09-19T00:00:00+02:00",
+          "2026-09-03T00:00:00+02:00",
+          "2026-09-10T00:00:00+02:00"
+        ]
+      },
+      {
+        "column_name": "adults",
+        "dtype": "int64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "2",
+          "1",
+          "2"
+        ]
+      },
+      {
+        "column_name": "children_ages",
+        "dtype": "float64",
+        "null_count": 100,
+        "null_pct": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      {
+        "column_name": "channel_code",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "Direct",
+          "Direct",
+          "Direct"
+        ]
+      },
+      {
+        "column_name": "external_code",
+        "dtype": "float64",
+        "null_count": 100,
+        "null_pct": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      },
+      {
+        "column_name": "balance",
+        "dtype": "float64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 99,
+        "sample_values": [
+          "-253.4",
+          "-130.59",
+          "-120.46"
+        ]
+      },
+      {
+        "column_name": "total_gross_amount",
+        "dtype": "float64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 99,
+        "sample_values": [
+          "253.4",
+          "130.59",
+          "120.46"
+        ]
+      },
+      {
+        "column_name": "guarantee_type",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 2,
+        "sample_values": [
+          "CreditCard",
+          "Prepayment",
+          "CreditCard"
+        ]
+      },
+      {
+        "column_name": "has_city_tax",
+        "dtype": "bool",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "False",
+          "False",
+          "False"
+        ]
+      },
+      {
+        "column_name": "is_open_for_charges",
+        "dtype": "bool",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "True",
+          "True",
+          "True"
+        ]
+      },
+      {
+        "column_name": "property_data",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "{\"id\": \"BER\", \"code\": \"BER\", \"name\": \"Hotel Berlin\", \"descri",
+          "{\"id\": \"BER\", \"code\": \"BER\", \"name\": \"Hotel Berlin\", \"descri",
+          "{\"id\": \"BER\", \"code\": \"BER\", \"name\": \"Hotel Berlin\", \"descri"
+        ]
+      },
+      {
+        "column_name": "rate_plan_data",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "{\"id\": \"BER-IBRKF-DBL\", \"code\": \"IBRKF\", \"name\": \"Include br",
+          "{\"id\": \"BER-IBRKF-DBL\", \"code\": \"IBRKF\", \"name\": \"Include br",
+          "{\"id\": \"BER-IBRKF-DBL\", \"code\": \"IBRKF\", \"name\": \"Include br"
+        ]
+      },
+      {
+        "column_name": "unit_group_data",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "{\"id\": \"BER-DBL\", \"code\": \"DBL\", \"name\": \"Double\", \"descript",
+          "{\"id\": \"BER-DBL\", \"code\": \"DBL\", \"name\": \"Double\", \"descript",
+          "{\"id\": \"BER-DBL\", \"code\": \"DBL\", \"name\": \"Double\", \"descript"
+        ]
+      },
+      {
+        "column_name": "unit_data",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "{\"id\": \"BER-ROOM987\", \"name\": \"2.207\", \"description\": \"Room ",
+          "{\"id\": \"BER-ROOM177\", \"name\": \"1.221\", \"description\": \"Room ",
+          "{\"id\": \"BER-ROOM302\", \"name\": \"2.760\", \"description\": \"Room "
+        ]
+      },
+      {
+        "column_name": "primary_guest",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "{\"firstName\": \"Abigail\", \"middleInitial\": \"N\", \"lastName\": \"",
+          "{\"firstName\": \"Elena\", \"middleInitial\": \"D\", \"lastName\": \"Sc",
+          "{\"firstName\": \"Sophie\", \"middleInitial\": \"J\", \"lastName\": \"M"
+        ]
+      },
+      {
+        "column_name": "validation_messages",
+        "dtype": "float64",
+        "null_count": 100,
+        "null_pct": 100.0,
+        "unique_count": 0,
+        "sample_values": []
+      }
+    ]
+  },
+  {
+    "filename": "synthetic_invoices_full.csv",
+    "filepath": "C:\\Users\\deves\\Downloads\\project\\synthetic_invoices_full.csv",
+    "file_size_bytes": 9870,
+    "row_count": 100,
+    "column_count": 9,
+    "columns": [
+      {
+        "column_name": "id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "QHMMYUKY-1-invoice",
+          "KELTWFWN-1-invoice",
+          "KANNJVGG-1-invoice"
+        ]
+      },
+      {
+        "column_name": "invoice_number",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "SYN-QHMMYUKY-1",
+          "SYN-KELTWFWN-1",
+          "SYN-KANNJVGG-1"
+        ]
+      },
+      {
+        "column_name": "folio_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "QHMMYUKY-1-1",
+          "KELTWFWN-1-1",
+          "KANNJVGG-1-1"
+        ]
+      },
+      {
+        "column_name": "reservation_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "QHMMYUKY-1",
+          "KELTWFWN-1",
+          "KANNJVGG-1"
+        ]
+      },
+      {
+        "column_name": "property_id",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 5,
+        "sample_values": [
+          "LND",
+          "LND",
+          "VIE"
+        ]
+      },
+      {
+        "column_name": "total",
+        "dtype": "float64",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 100,
+        "sample_values": [
+          "337.65",
+          "164.52",
+          "102.27"
+        ]
+      },
+      {
+        "column_name": "invoice_date",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 58,
+        "sample_values": [
+          "2026-09-08",
+          "2026-09-24",
+          "2026-10-12"
+        ]
+      },
+      {
+        "column_name": "status",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "ISSUED",
+          "ISSUED",
+          "ISSUED"
+        ]
+      },
+      {
+        "column_name": "data_source",
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_count": 1,
+        "sample_values": [
+          "synthetic",
+          "synthetic",
+          "synthetic"
+        ]
+      }
+    ]
+  }
+]

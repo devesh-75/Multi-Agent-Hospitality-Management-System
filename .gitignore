@@ -1,0 +1,38 @@
+# Virtual Environments
+venv/
+.venv/
+env/
+
+# Python & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment Variables
+.env
+!.env.example
+
+# Database Files
+*.db
+*.sqlite3
+data/hospitality.db
+
+# Node.js & Frontend Build
+node_modules/
+dist/
+build/
+.next/
+*.log
+
+# Sensitive Datasets / Downloads
+data/raw/
+C:/Users/deves/Downloads/project/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

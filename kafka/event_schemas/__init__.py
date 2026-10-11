@@ -1,0 +1,1 @@
+from kafka.event_schemas.events import BusinessEventSchema
