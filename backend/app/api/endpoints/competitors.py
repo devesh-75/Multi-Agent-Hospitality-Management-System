@@ -24,6 +24,15 @@ def list_competitors(
         query = query.filter(Competitor.target_property_id == property_id)
     return query.all()
 
+
+@router.get("/competitor-overview", response_model=List[Dict[str, Any]])
+def get_competitor_overview(
+    property_id: Optional[str] = Query(None, description="Target hotel property code"),
+    db: Session = Depends(get_db)
+):
+    return BDEAgent(db).get_competitor_overview(property_id=property_id)
+
+
 @router.get("/competitors/{competitor_id}", response_model=CompetitorSchema)
 def get_competitor(competitor_id: str, db: Session = Depends(get_db)):
     c = db.query(Competitor).filter(Competitor.id == competitor_id).first()

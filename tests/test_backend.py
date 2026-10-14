@@ -159,6 +159,26 @@ def test_api_bde_gaps():
     assert resp.status_code == 200
     assert len(resp.json()) > 0
 
+def test_api_bde_competitor_overview():
+    resp = client.get("/api/v1/competitor-overview?property_id=BER")
+    assert resp.status_code == 200
+    competitors = resp.json()
+    assert len(competitors) > 0
+    assert all(
+        {"average_price", "sentiment_score", "confirmed_features_count"} <= competitor.keys()
+        for competitor in competitors
+    )
+
+def test_api_bde_ask():
+    resp = client.post(
+        "/api/v1/bde/ask",
+        json={"question": "Compare our competitor rates", "property_id": "BER"}
+    )
+    assert resp.status_code == 200
+    data = resp.json()
+    assert "Hotel Berlin" in data["answer"]
+    assert data["sources"]
+
 def test_api_ask():
     resp = client.post("/api/v1/ask", json={"question": "What is our occupancy rate?"})
     assert resp.status_code == 200

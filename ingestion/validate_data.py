@@ -12,13 +12,14 @@ import os
 import json
 import logging
 from typing import Dict, List, Any
+from backend.app.core.config import settings
 from ingestion.source_adapters.csv_adapter import CSVPMSAdapter
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class DataValidator:
-    def __init__(self, data_dir: str = r"C:\Users\deves\Downloads\project"):
+    def __init__(self, data_dir: str = settings.SOURCE_DATA_DIR):
         self.adapter = CSVPMSAdapter(data_dir=data_dir)
         self.validation_results = {
             "is_valid": True,

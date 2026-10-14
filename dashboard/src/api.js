@@ -2,7 +2,7 @@
  * Centralized API Client for Hospitality Fintech Backend
  */
 
-const API_BASE = "http://localhost:8000/api/v1";
+const API_BASE = import.meta.env.VITE_API_BASE || "/api/v1";
 
 async function request(endpoint, options = {}) {
   try {
@@ -56,6 +56,7 @@ export const api = {
 
   // Competitor Intelligence & BDE
   getCompetitors: (propId) => request(`/competitors${propId ? `?property_id=${propId}` : ""}`),
+  getCompetitorOverview: (propId) => request(`/competitor-overview${propId ? `?property_id=${propId}` : ""}`),
   getCompetitorComparison: (propId = "BER") => request(`/competitor-comparison?property_id=${propId}`),
   getCompetitiveGaps: (propId = "BER") => request(`/competitive-gaps?property_id=${propId}`),
   getCompetitiveTrends: (propId = "BER") => request(`/competitive-trends?property_id=${propId}`),

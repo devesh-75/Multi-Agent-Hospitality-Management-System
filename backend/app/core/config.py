@@ -26,7 +26,7 @@ class Settings(BaseSettings):
     
     # Source Datasets Directory
     SOURCE_DATA_DIR: str = Field(
-        default=r"C:\Users\deves\Downloads\project",
+        default="./data/raw",
         env="SOURCE_DATA_DIR"
     )
     
@@ -45,7 +45,12 @@ class Settings(BaseSettings):
     EMBEDDING_MODEL: str = Field(default="text-embedding-3-small", env="EMBEDDING_MODEL")
     
     # CORS
-    CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:5173", "http://127.0.0.1:3000", "http://127.0.0.1:5173", "*"]
+    CORS_ORIGINS: list[str] = [
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:5173",
+    ]
 
     class Config:
         env_file = ".env"

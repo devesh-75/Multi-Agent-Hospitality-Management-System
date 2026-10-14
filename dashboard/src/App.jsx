@@ -69,7 +69,7 @@ export default function App() {
         api.getPayments(selectedProperty, 100),
         api.getReconciliation(selectedProperty),
         api.getExpenses(selectedProperty),
-        api.getCompetitors(selectedProperty),
+        api.getCompetitorOverview(selectedProperty),
         api.getAlerts(selectedProperty),
         api.getReports(selectedProperty),
         api.getAgentRuns()

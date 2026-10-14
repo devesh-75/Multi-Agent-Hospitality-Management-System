@@ -4,6 +4,7 @@ Integrates REST APIs, CORS middleware, error handlers, and database lifecycle.
 """
 
 import logging
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -29,10 +30,23 @@ from backend.app.api.endpoints.ask import router as ask_router
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("hospitality_app")
 
+
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    logger.info("Initializing database schema on startup...")
+    init_db()
+    logger.info("Application startup sequence completed.")
+    yield
+
+
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
-    description="Agentic Layer for Fintech Operations & Competitive Intelligence in Hospitality Services"
+    description="Agentic Layer for Fintech Operations & Competitive Intelligence in Hospitality Services",
+    lifespan=lifespan,
+    docs_url="/docs" if settings.DEBUG else None,
+    redoc_url="/redoc" if settings.DEBUG else None,
+    openapi_url="/openapi.json" if settings.DEBUG else None,
 )
 
 # CORS Middleware
@@ -69,18 +83,12 @@ app.include_router(alerts_router, prefix=settings.API_V1_PREFIX)
 app.include_router(agents_router, prefix=settings.API_V1_PREFIX)
 app.include_router(ask_router, prefix=settings.API_V1_PREFIX)
 
-@app.on_event("startup")
-def on_startup():
-    logger.info("Initializing database schema on startup...")
-    init_db()
-    logger.info("Application startup sequence completed.")
-
 @app.get("/")
 def root():
     return {
         "project": settings.PROJECT_NAME,
         "version": settings.VERSION,
-        "docs_url": "/docs",
+        "docs_url": "/docs" if settings.DEBUG else None,
         "health_check": "/health"
     }
 

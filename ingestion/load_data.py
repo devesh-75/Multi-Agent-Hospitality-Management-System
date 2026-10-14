@@ -13,6 +13,7 @@ from typing import Dict, Any
 sys.path.insert(0, os.path.abspath("."))
 
 from backend.app.core.database import SessionLocal, init_db, engine, Base
+from backend.app.core.config import settings
 from backend.app.models.entities import (
     Property, RoomType, Room, Guest, RatePlan, Reservation, Folio,
     Invoice, InvoiceItem, Charge, Payment, OTASettlement,
@@ -25,7 +26,7 @@ from scripts.seed_missing_entities import generate_synthetic_expenses, generate_
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-def load_all_data(data_dir: str = r"C:\Users\deves\Downloads\project") -> Dict[str, int]:
+def load_all_data(data_dir: str = settings.SOURCE_DATA_DIR) -> Dict[str, int]:
     logger.info("Initializing database schema...")
     init_db()
     

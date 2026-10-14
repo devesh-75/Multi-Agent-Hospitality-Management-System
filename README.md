@@ -34,7 +34,7 @@ The application answers three central executive questions:
 
 ## 3. Core Objectives
 
-- **PMS Ingestion & Normalization:** Ingest real PMS exports (`C:\Users\deves\Downloads\project`) without data destruction, extracting nested JSON entities (rooms, guests, line items) into a unified relational database.
+- **PMS Ingestion & Normalization:** Ingest PMS exports from the configured `SOURCE_DATA_DIR` without modifying source files, extracting nested JSON entities (rooms, guests, line items) into a unified relational database.
 - **Automated Ledger Reconciliation:** Multi-way matching across invoices, recorded payments, and OTA remittances with automated exception tagging (underpayments, overpayments, missing payouts).
 - **Statistical Expense Auditing:** Categorical cost allocation with $Z \ge 2.0\sigma$ statistical anomaly detection.
 - **Empirical Yield Analytics:** Deterministic calculation of Average Daily Rate (ADR), Revenue Per Available Room (RevPAR), Occupancy %, and 14-day trend forecasting.
@@ -50,7 +50,7 @@ The application answers three central executive questions:
 The application is structured into five cohesive tiers:
 
 ```
-[ Raw CSV Datasets: C:\Users\deves\Downloads\project ]
+[ Raw CSV Datasets: SOURCE_DATA_DIR ]
                         │
                         ▼
 [ Ingestion & Normalization Engine (CSVPMSAdapter) ]
@@ -173,9 +173,9 @@ agentic-hospitality/
 
 ## 7. Dataset Directory & Discovery Process
 
-The primary data source is the user's project directory:
+The primary data source is the directory configured by `SOURCE_DATA_DIR`:
 
-`C:\Users\deves\Downloads\project`
+`./data/raw` by default; override this path in `.env` for other data locations.
 
 ### Discovery Audit Summary
 The directory contains **8 primary CSV files** totaling **407.3 KB** and **1,030 total records**:
@@ -217,6 +217,31 @@ CREATE DATABASE hospitality_db;
 ### SQLite Fallback (Zero Setup)
 By default, the application runs on `sqlite:///./data/hospitality.db`. The SQLite database initializes automatically when running `ingestion/load_data.py`.
 
+## Docker Deployment
+
+Docker Compose runs the dashboard, FastAPI backend, and PostgreSQL with service health checks. The dashboard proxies API requests through Nginx, so the browser does not need a hardcoded backend address. PostgreSQL and the backend are published on localhost only by default.
+
+1. Copy `.env.docker.example` to `.env` and replace the example password. Keep `POSTGRES_PASSWORD` and the password in `DATABASE_URL` identical; URL-encode reserved characters in the database URL.
+2. Put the PMS CSV exports in `data/raw` (or set `SOURCE_DATA_DIR` in `.env` to the export directory).
+3. Start the services:
+
+   ```powershell
+   Copy-Item .env.docker.example .env
+   docker compose up --build -d
+   ```
+
+4. Load source data into a new or intentionally-cleared database:
+
+   ```powershell
+   docker compose exec backend python ingestion/load_data.py
+   ```
+
+   **Warning:** the ingestion command clears and reloads the application tables. Do not run it against a database containing changes you need to preserve.
+
+5. Open the dashboard at `http://localhost:3000`. Check runtime health at `http://localhost:8000/health`.
+
+The default Compose deployment uses the deterministic local embedding fallback and database event queue; it does not start or enable Kafka or Qdrant. Set production CORS origins using a JSON array in `CORS_ORIGINS` only if clients must call the API cross-origin. Interactive API documentation is disabled when `DEBUG=false`.
+
 ---
 
 ## 10. Environment Configuration
@@ -236,7 +261,7 @@ DEBUG=true
 DATABASE_URL=sqlite:///./data/hospitality.db
 
 # Source Datasets Directory
-SOURCE_DATA_DIR=C:\Users\deves\Downloads\project
+SOURCE_DATA_DIR=./data/raw
 
 # Apache Kafka (Optional)
 KAFKA_BOOTSTRAP_SERVERS=localhost:9092
@@ -268,7 +293,7 @@ pip install -r backend/requirements.txt
 ```
 
 ### Step 3: Run Ingestion Pipeline
-Ingests all 8 CSV files from `C:\Users\deves\Downloads\project` and seeds missing domains:
+Ingests all 8 CSV files from `SOURCE_DATA_DIR` and seeds missing domains:
 ```bash
 python ingestion/load_data.py
 ```

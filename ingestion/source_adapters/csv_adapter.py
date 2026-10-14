@@ -9,6 +9,7 @@ import json
 import logging
 import pandas as pd
 from typing import Dict, List, Any
+from backend.app.core.config import settings
 from ingestion.source_adapters.base_adapter import BasePMSAdapter
 
 logger = logging.getLogger(__name__)
@@ -16,7 +17,7 @@ logger = logging.getLogger(__name__)
 class CSVPMSAdapter(BasePMSAdapter):
     """Adapter for importing datasets from local CSV files."""
 
-    def __init__(self, data_dir: str = r"C:\Users\deves\Downloads\project"):
+    def __init__(self, data_dir: str = settings.SOURCE_DATA_DIR):
         self.data_dir = data_dir
         if not os.path.exists(self.data_dir):
             raise FileNotFoundError(f"Source data directory does not exist: {self.data_dir}")
