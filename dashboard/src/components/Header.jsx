@@ -1,103 +1,60 @@
-import React from "react";
-import { RefreshCw, Play, Building, Activity, Sparkles } from "lucide-react";
+import React, { useState } from "react";
+import { RefreshCw, Building, ChevronDown, MoreHorizontal, CalendarDays, Download, Sun, Moon } from "lucide-react";
 
-export default function Header({
-  selectedProperty,
-  setSelectedProperty,
-  properties = [],
-  onRefresh,
-  onRunAudit,
-  backendStatus = "healthy",
-  loading = false
-}) {
+const titles = {
+  overview: "Executive Overview",
+  properties: "Properties & Rooms",
+  reservations: "Reservations & Occupancy",
+  revenue: "Revenue Analytics",
+  invoices: "Invoices & Payments",
+  reconciliation: "Reconciliation",
+  expenses: "Expense Tracking",
+  agents: "AI Multi-Agent Layer",
+  bde: "Business Development",
+  reports: "Operational Reports",
+  data_quality: "Data Quality & Lineage",
+  ask_ai: "Ask AI Assistant"
+};
+
+export default function Header({ selectedProperty, setSelectedProperty, properties = [], onRefresh, onRunAudit, onExport, backendStatus = "healthy", loading = false, currentView = "overview", darkTheme = false, onToggleTheme }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [mode, setMode] = useState("Desktop");
+  const [environment, setEnvironment] = useState("Production");
   return (
-    <header style={{
-      height: "70px",
-      borderBottom: "1px solid var(--border)",
-      background: "rgba(15, 20, 32, 0.75)",
-      backdropFilter: "blur(12px)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      padding: "0 28px",
-      position: "sticky",
-      top: 0,
-      zIndex: 40
-    }}>
-      {/* Left: Property Filter */}
-      <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--text-muted)", fontSize: "0.85rem" }}>
-          <Building size={18} color="var(--primary)" />
-          <span style={{ fontWeight: 600 }}>Active Property Scope:</span>
+    <>
+      <header style={{ height: "64px", borderBottom: "1px solid var(--border)", background: "var(--bg-panel)", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 24px", position: "sticky", top: 0, zIndex: 40 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", minWidth: "280px" }}>
+          <div style={{ position: "relative" }}>
+            <button type="button" className="btn btn-secondary" onClick={() => setSelectedProperty(selectedProperty ? "" : (properties[0]?.id || ""))} aria-label="Toggle property scope" style={{ padding: "6px 10px" }}>
+              <Building size={15} color="var(--primary)" />
+              <span>{selectedProperty || "All properties"}</span>
+              <ChevronDown size={14} color="var(--text-dim)" />
+            </button>
+          </div>
+          <select value={selectedProperty} onChange={(event) => setSelectedProperty(event.target.value)} aria-label="Global property selector" style={{ maxWidth: "170px", padding: "7px 8px", border: "1px solid var(--border)", borderRadius: "6px", background: "var(--bg-panel)" }}>
+            <option value="">All properties</option>
+            {properties.map((property) => <option key={property.id} value={property.id}>{property.id} - {property.name}</option>)}
+          </select>
         </div>
-        <select
-          value={selectedProperty}
-          onChange={(e) => setSelectedProperty(e.target.value)}
-          style={{
-            background: "rgba(255, 255, 255, 0.06)",
-            color: "#ffffff",
-            border: "1px solid var(--border)",
-            borderRadius: "8px",
-            padding: "8px 14px",
-            fontSize: "0.86rem",
-            fontWeight: 600,
-            cursor: "pointer",
-            outline: "none"
-          }}
-        >
-          <option value="">Consolidated Network (All 5 Properties)</option>
-          {properties.map((p) => (
-            <option key={p.id} value={p.id}>
-              {p.id} - {p.name} ({p.country_code})
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Right Actions & Health */}
-      <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-        {/* Backend Status Badge */}
-        <div style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
-          padding: "6px 12px",
-          borderRadius: "8px",
-          background: backendStatus === "healthy" ? "rgba(16, 185, 129, 0.1)" : "rgba(239, 68, 68, 0.1)",
-          border: `1px solid ${backendStatus === "healthy" ? "rgba(16, 185, 129, 0.25)" : "rgba(239, 68, 68, 0.25)"}`,
-          fontSize: "0.78rem"
-        }}>
-          <div className="live-indicator" style={{
-            backgroundColor: backendStatus === "healthy" ? "#10b981" : "#ef4444",
-            boxShadow: `0 0 8px ${backendStatus === "healthy" ? "#10b981" : "#ef4444"}`
-          }} />
-          <span style={{ fontWeight: 600, color: backendStatus === "healthy" ? "#34d399" : "#f87171" }}>
-            Backend {backendStatus === "healthy" ? "Online" : "Disconnected"}
-          </span>
+        <h1 style={{ margin: 0, fontSize: "16px", fontWeight: 650, color: "var(--text-main)" }}>{titles[currentView] || "Hospitality Operations"}</h1>
+        <div style={{ minWidth: "280px", display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "14px" }}>
+          <span style={{ fontSize: "12px", color: backendStatus === "healthy" ? "var(--success)" : "var(--danger)" }}>Backend {backendStatus === "healthy" ? "online" : "degraded"}</span>
+          <button type="button" className="btn btn-secondary" onClick={() => setMenuOpen((open) => !open)} aria-label="Open dashboard actions" aria-expanded={menuOpen} style={{ padding: "7px" }}><MoreHorizontal size={17} /></button>
+          {menuOpen && <div style={{ position: "absolute", top: "52px", right: "20px", width: "170px", padding: "6px", border: "1px solid var(--border)", borderRadius: "6px", background: "var(--bg-panel)", boxShadow: "0 4px 12px rgba(0,0,0,0.08)" }}>
+            <button type="button" className="btn" onClick={() => { setMenuOpen(false); onRefresh(); }} disabled={loading} style={{ width: "100%", justifyContent: "flex-start", border: 0 }}><RefreshCw size={14} /> Refresh</button>
+            <button type="button" className="btn" onClick={() => { setMenuOpen(false); onExport?.(); }} style={{ width: "100%", justifyContent: "flex-start", border: 0 }}><Download size={14} /> Export</button>
+            <button type="button" className="btn" onClick={() => { setMenuOpen(false); onToggleTheme(); }} style={{ width: "100%", justifyContent: "flex-start", border: 0 }}>{darkTheme ? <Sun size={14} /> : <Moon size={14} />} Toggle theme</button>
+          </div>}
         </div>
-
-        {/* Trigger Audit Button */}
-        <button
-          onClick={onRunAudit}
-          disabled={loading}
-          className="btn btn-primary"
-          style={{ fontSize: "0.82rem", padding: "7px 14px" }}
-        >
-          <Sparkles size={16} />
-          <span>Execute Multi-Agent Audit</span>
-        </button>
-
-        {/* Refresh Button */}
-        <button
-          onClick={onRefresh}
-          disabled={loading}
-          className="btn btn-secondary"
-          style={{ padding: "7px 12px" }}
-          title="Refresh dataset from backend"
-        >
-          <RefreshCw size={16} className={loading ? "spin-animation" : ""} />
-        </button>
+      </header>
+      <div style={{ minHeight: "52px", padding: "10px 24px", display: "flex", alignItems: "center", gap: "10px", borderBottom: "1px solid var(--border)", background: "var(--bg-main)" }}>
+        <div style={{ display: "inline-flex", border: "1px solid var(--border)", borderRadius: "6px", background: "var(--bg-panel)", padding: "2px" }}>
+          {["Desktop", "Mobile"].map((item) => <button type="button" key={item} onClick={() => setMode(item)} style={{ border: 0, borderRadius: "4px", padding: "6px 12px", background: mode === item ? "var(--text-main)" : "transparent", color: mode === item ? "var(--bg-panel)" : "var(--text-muted)", cursor: "pointer", fontSize: "12px", fontWeight: 600 }}>{item}</button>)}
+        </div>
+        <select value={environment} onChange={(event) => setEnvironment(event.target.value)} aria-label="Environment" style={{ padding: "7px 10px", border: "1px solid var(--border)", borderRadius: "6px", background: "var(--bg-panel)" }}><option>Production</option><option>Demo data</option></select>
+        <button type="button" className="btn btn-secondary" onClick={() => onRefresh()} disabled={loading} style={{ marginLeft: "auto" }}><CalendarDays size={14} /> Last 7 days</button>
+        <button type="button" className="btn btn-primary" onClick={onRunAudit} disabled={loading}>{loading ? "Running..." : "Run audit"}</button>
       </div>
-    </header>
+    </>
   );
 }

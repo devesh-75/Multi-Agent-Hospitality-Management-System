@@ -41,39 +41,44 @@ export default function App() {
   const [reports, setReports] = useState([]);
   const [agentRuns, setAgentRuns] = useState([]);
   const [lastAgentResult, setLastAgentResult] = useState(null);
+  const [requestErrors, setRequestErrors] = useState([]);
+  const [toast, setToast] = useState(null);
+  const [darkTheme, setDarkTheme] = useState(() => localStorage.getItem("hospitality-theme") === "dark");
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = darkTheme ? "dark" : "light";
+    localStorage.setItem("hospitality-theme", darkTheme ? "dark" : "light");
+  }, [darkTheme]);
 
   const fetchData = async () => {
     setLoading(true);
+    setRequestErrors([]);
     try {
-      const [
-        healthRes,
-        propsRes,
-        revSummary,
-        propComp,
-        resRes,
-        invRes,
-        pmtRes,
-        recRes,
-        expRes,
-        compRes,
-        alertsRes,
-        repRes,
-        runsRes
-      ] = await Promise.allSettled([
-        api.getHealth(),
-        api.getProperties(),
-        api.getRevenueSummary(selectedProperty),
-        api.getPropertyComparison(),
-        api.getReservations(selectedProperty, 100),
-        api.getInvoices(selectedProperty, 100),
-        api.getPayments(selectedProperty, 100),
-        api.getReconciliation(selectedProperty),
-        api.getExpenses(selectedProperty),
-        api.getCompetitorOverview(selectedProperty),
-        api.getAlerts(selectedProperty),
-        api.getReports(selectedProperty),
-        api.getAgentRuns()
-      ]);
+      const requests = [
+        ["health", api.getHealth()],
+        ["properties", api.getProperties()],
+        ["revenue", api.getRevenueSummary(selectedProperty)],
+        ["revenue/comparison", api.getPropertyComparison()],
+        ["reservations", api.getReservations(selectedProperty, 100)],
+        ["invoices", api.getInvoices(selectedProperty, 100)],
+        ["invoices/payments/list", api.getPayments(selectedProperty, 100)],
+        ["reconciliation", api.getReconciliation(selectedProperty)],
+        ["expenses", api.getExpenses(selectedProperty)],
+        ["competitor-overview", api.getCompetitorOverview(selectedProperty)],
+        ["alerts", api.getAlerts(selectedProperty)],
+        ["reports", api.getReports(selectedProperty)],
+        ["agents/runs", api.getAgentRuns()]
+      ];
+      const results = await Promise.allSettled(requests.map(([, request]) => request));
+      const failures = results
+        .map((result, index) => ({ result, endpoint: requests[index][0] }))
+        .filter(({ result }) => result.status === "rejected");
+      failures.forEach(({ result, endpoint }) => {
+        console.error(`Dashboard request failed: ${endpoint}`, result.reason);
+      });
+      setRequestErrors(failures.map(({ endpoint }) => endpoint));
+
+      const [healthRes, propsRes, revSummary, propComp, resRes, invRes, pmtRes, recRes, expRes, compRes, alertsRes, repRes, runsRes] = results;
 
       if (healthRes.status === "fulfilled") {
         setBackendStatus(healthRes.value.status);
@@ -96,13 +101,24 @@ export default function App() {
 
       // Fetch BDE details for specific property (or BER default)
       const bdeProp = selectedProperty || "BER";
-      const [compCompRes, gapsRes, trendsRes, swotRes, oppsRes] = await Promise.allSettled([
-        api.getCompetitorComparison(bdeProp),
-        api.getCompetitiveGaps(bdeProp),
-        api.getCompetitiveTrends(bdeProp),
-        api.getSWOTAnalysis(bdeProp),
-        api.getBusinessOpportunities(bdeProp)
+      const bdeRequests = [
+        ["competitor-comparison", api.getCompetitorComparison(bdeProp)],
+        ["competitive-gaps", api.getCompetitiveGaps(bdeProp)],
+        ["competitive-trends", api.getCompetitiveTrends(bdeProp)],
+        ["swot-analysis", api.getSWOTAnalysis(bdeProp)],
+        ["business-opportunities", api.getBusinessOpportunities(bdeProp)]
+      ];
+      const bdeResults = await Promise.allSettled(bdeRequests.map(([, request]) => request));
+      const bdeFailures = bdeResults
+        .map((result, index) => ({ result, endpoint: bdeRequests[index][0] }))
+        .filter(({ result }) => result.status === "rejected");
+      bdeFailures.forEach(({ result, endpoint }) => {
+        console.error(`Dashboard request failed: ${endpoint}`, result.reason);
+      });
+      setRequestErrors((previous) => [
+        ...new Set([...previous, ...bdeFailures.map(({ endpoint }) => endpoint)])
       ]);
+      const [compCompRes, gapsRes, trendsRes, swotRes, oppsRes] = bdeResults;
 
       if (compCompRes.status === "fulfilled") setCompComparison(compCompRes.value);
       if (gapsRes.status === "fulfilled") setFeatureGaps(gapsRes.value);
@@ -127,10 +143,12 @@ export default function App() {
     try {
       const result = await api.runAgents(selectedProperty, agent);
       setLastAgentResult(result);
+      setToast({ type: "success", message: `${agent === "all" ? "Full workflow" : agent} run completed.` });
       // Refresh metrics after run
       await fetchData();
     } catch (err) {
-      alert("Error executing agent run: " + err.message);
+      console.error("Agent run failed", err);
+      setToast({ type: "error", message: err.message || "The agent run failed." });
     } finally {
       setLoading(false);
     }
@@ -158,8 +176,35 @@ export default function App() {
     }
   };
 
+  const handleExport = () => {
+    if (!reconciliationData) {
+      setToast({ type: "error", message: "There is no reconciliation data to export." });
+      return;
+    }
+    const blob = new Blob([JSON.stringify(reconciliationData, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "reconciliation-data.json";
+    link.click();
+    URL.revokeObjectURL(url);
+    setToast({ type: "success", message: "Reconciliation data exported." });
+  };
+
   return (
     <div style={{ display: "flex", minHeight: "100vh", background: "var(--bg-main)" }}>
+      {requestErrors.length > 0 && (
+        <div className="error-banner" role="alert">
+          <span>Unable to load: {requestErrors.join(", ")}</span>
+          <button type="button" onClick={() => setRequestErrors([])} aria-label="Dismiss request errors">Dismiss</button>
+        </div>
+      )}
+      {toast && (
+        <div className={`toast toast-${toast.type}`} role="status">
+          <span>{toast.message}</span>
+          <button type="button" onClick={() => setToast(null)} aria-label="Dismiss notification">Dismiss</button>
+        </div>
+      )}
       {/* Sidebar Navigation */}
       <Sidebar
         currentView={currentView}
@@ -175,6 +220,10 @@ export default function App() {
           properties={properties}
           onRefresh={fetchData}
           onRunAudit={() => handleRunAudit("all")}
+          onExport={handleExport}
+          currentView={currentView}
+          darkTheme={darkTheme}
+          onToggleTheme={() => setDarkTheme((current) => !current)}
           backendStatus={backendStatus}
           loading={loading}
         />

@@ -378,7 +378,7 @@ class BDEAgent:
             answer = f"**SWOT Analysis for {prop.name}:**\n\n- **Strength:** {s_text}\n- **Weakness:** {w_text}\n- **Opportunity:** {o_text}\n- **Threat:** {t_text}\n\n*All insights grounded in internal PMS records and competitor benchmarks.*"
         else: # Growth opportunity / recommendations
             opp = opps[0]
-            answer = f"**Top Business Growth Recommendation for {prop.name}:**\n\n### {opp['title']}\n- **Observation:** {opp['observation']}\n- **Action:** {opp['recommended_action']}\n- **Expected Impact:** {opp['expected_impact']}\n- **Confidence:** {opp['confidence_level']}\n- **Human Validation:** {opp['human_validation']}"
+            answer = f"**Top Business Growth Recommendation for {prop.name}:**\n\n### {opp['title']}\n- **Observation:** {opp['observation']}\n- **Action:** {opp['recommended_action']}\n- **Expected Impact:** {opp['expected_business_impact']}\n- **Confidence:** {opp['confidence_level']}\n- **Human Validation:** {opp['human_validation']}"
 
         return {
             "question": question,

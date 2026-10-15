@@ -32,7 +32,7 @@ class ExpenseAgent:
         expenses = query.all()
 
         if not expenses:
-            return {"by_category": {}, "by_vendor": {}, "by_month": {}, "total_amount": 0.0}
+            return {"by_category": {}, "by_vendor": {}, "by_month": {}, "total_expenses": 0.0, "category_percentages": {}, "top_vendors": {}, "monthly_trend": {}}
 
         df = pd.DataFrame([{
             "id": e.id,
@@ -156,9 +156,17 @@ class ExpenseAgent:
                 "action": "Evaluate sub-metering on HVAC and smart thermostat timers during vacancy periods."
             })
         if "Maintenance" in breakdown.get("by_category", {}):
+            # Find the month with highest maintenance spend from actual data
+            maint_anomalies = [a for a in anomalies if a.get("category") == "Maintenance"]
+            if maint_anomalies:
+                top_maint = max(maint_anomalies, key=lambda a: a["amount"])
+                maint_observation = f"Anomalous maintenance charge of {top_maint['amount']:.2f} {top_maint['currency']} detected on {top_maint['date']} from {top_maint['vendor']}."
+            else:
+                maint_pct = breakdown['category_percentages'].get('Maintenance', 0)
+                maint_observation = f"Maintenance accounts for {maint_pct}% of total operating spend."
             recommendations.append({
                 "category": "Maintenance",
-                "observation": f"Emergency maintenance charges detected in September 2026.",
+                "observation": maint_observation,
                 "action": "Transition high-failure HVAC equipment to preventive quarterly maintenance contracts to avoid peak emergency labor premiums."
             })
 

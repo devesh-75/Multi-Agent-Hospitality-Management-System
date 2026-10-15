@@ -9,6 +9,7 @@ export default function AIAgentsView({
   selectedProperty
 }) {
   const [selectedAgent, setSelectedAgent] = useState("all");
+  const safeAgentRuns = Array.isArray(agentRuns) ? agentRuns : [];
 
   const handleRun = () => {
     onRunAudit(selectedAgent);
@@ -130,14 +131,14 @@ export default function AIAgentsView({
         {/* Right: Historical Agent Execution Log */}
         <div className="glass-card" style={{ padding: "24px" }}>
           <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#ffffff", marginBottom: "4px" }}>
-            Agent Execution Runs ({agentRuns.length})
+            Agent Execution Runs ({safeAgentRuns.length})
           </h3>
           <p style={{ fontSize: "0.76rem", color: "var(--text-muted)", marginBottom: "16px" }}>
             Immutable audit trail of previous pipeline invocations
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "10px", maxHeight: "420px", overflowY: "auto" }}>
-            {agentRuns.map((r) => (
+            {safeAgentRuns.map((r) => (
               <div key={r.id} style={{
                 background: "rgba(255, 255, 255, 0.02)",
                 padding: "12px",
@@ -146,15 +147,15 @@ export default function AIAgentsView({
                 fontSize: "0.78rem"
               }}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "4px" }}>
-                  <span style={{ fontWeight: 700, color: "#ffffff" }}>{r.agent_name}</span>
-                  <span className="badge badge-success" style={{ fontSize: "0.62rem" }}>{r.status}</span>
+                  <span style={{ fontWeight: 700, color: "#ffffff" }}>{r?.agent_name || "Unknown agent"}</span>
+                  <span className="badge badge-success" style={{ fontSize: "0.62rem" }}>{r?.status || "UNKNOWN"}</span>
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between", color: "var(--text-dim)", fontSize: "0.72rem" }}>
-                  <span>Scope: {r.property_id || "ALL"}</span>
-                  <span>Duration: {r.execution_time_ms} ms</span>
+                  <span>Scope: {r?.property_id || "ALL"}</span>
+                  <span>Duration: {r?.execution_time_ms ?? 0} ms</span>
                 </div>
                 <div style={{ fontSize: "0.68rem", color: "var(--text-muted)", marginTop: "4px" }}>
-                  {r.started_at ? new Date(r.started_at).toLocaleString() : ""}
+                  {r?.started_at ? new Date(r.started_at).toLocaleString() : ""}
                 </div>
               </div>
             ))}

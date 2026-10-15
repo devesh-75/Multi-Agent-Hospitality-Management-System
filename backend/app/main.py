@@ -62,9 +62,12 @@ app.add_middleware(
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
     logger.error(f"Global unhandled exception on {request.url.path}: {exc}", exc_info=True)
+    detail = "An internal server error occurred. Please consult backend logs."
+    if settings.DEBUG:
+        detail = f"{type(exc).__name__}: {str(exc)}"
     return JSONResponse(
         status_code=500,
-        content={"detail": "An internal server error occurred. Please consult backend logs."}
+        content={"detail": detail}
     )
 
 # Include Routers

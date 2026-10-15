@@ -6,8 +6,9 @@ export default function ReconciliationView({ reconciliationData, onRunAudit, loa
     return <div style={{ padding: "40px", textAlign: "center", color: "var(--text-muted)" }}>Loading reconciliation ledger...</div>;
   }
 
-  const otaExceptions = reconciliationData.ota_exceptions || [];
-  const topInvoices = reconciliationData.top_invoice_exceptions || [];
+  const otaExceptions = Array.isArray(reconciliationData.ota_exceptions) ? reconciliationData.ota_exceptions : [];
+  const topInvoices = Array.isArray(reconciliationData.top_invoice_exceptions) ? reconciliationData.top_invoice_exceptions : [];
+  const formatAmount = (value) => Number(value || 0).toFixed(2);
 
   return (
     <div style={{ padding: "28px" }}>
@@ -123,13 +124,13 @@ export default function ReconciliationView({ reconciliationData, onRunAudit, loa
                       {o.scenario}
                     </span>
                   </td>
-                  <td>€{o.gross_amount.toFixed(2)}</td>
-                  <td>€{o.expected_settlement.toFixed(2)}</td>
+                  <td>€{formatAmount(o.gross_amount)}</td>
+                  <td>€{formatAmount(o.expected_settlement)}</td>
                   <td style={{ fontWeight: 700, color: o.actual_settlement ? "#ffffff" : "var(--danger)" }}>
-                    {o.actual_settlement !== null ? `€${o.actual_settlement.toFixed(2)}` : "MISSING"}
+                    {o.actual_settlement !== null && o.actual_settlement !== undefined ? `€${formatAmount(o.actual_settlement)}` : "MISSING"}
                   </td>
                   <td style={{ fontWeight: 700, color: o.difference > 0 ? "var(--warning)" : (o.difference < 0 ? "var(--accent-cyan)" : "var(--success)") }}>
-                    {o.difference !== 0 ? `€${o.difference.toFixed(2)}` : "€0.00"}
+                    {Number(o.difference || 0) !== 0 ? `€${formatAmount(o.difference)}` : "€0.00"}
                   </td>
                   <td style={{ fontSize: "0.76rem", color: "var(--text-muted)", maxWidth: "300px" }}>
                     {o.recommended_action}
@@ -172,9 +173,9 @@ export default function ReconciliationView({ reconciliationData, onRunAudit, loa
                   <td style={{ fontFamily: "var(--font-mono)", fontSize: "0.76rem", color: "var(--text-dim)" }}>
                     {inv.reservation_id}
                   </td>
-                  <td>€{inv.invoice_total.toFixed(2)}</td>
-                  <td style={{ color: "var(--success)" }}>€{inv.payments_total.toFixed(2)}</td>
-                  <td style={{ fontWeight: 700, color: "var(--danger)" }}>€{inv.difference.toFixed(2)}</td>
+                  <td>€{formatAmount(inv.invoice_total)}</td>
+                  <td style={{ color: "var(--success)" }}>€{formatAmount(inv.payments_total)}</td>
+                  <td style={{ fontWeight: 700, color: "var(--danger)" }}>€{formatAmount(inv.difference)}</td>
                   <td>
                     <span className="badge badge-warning">{inv.status}</span>
                   </td>
